@@ -55,7 +55,7 @@ function exportMethod() {
     outArray.push(bytes[i]);
   }
   var methodToInsert = convertToIntArray(methodContent);
-  for(var i=0; i<methodToInsert.length; i++) {
+  for(var i=0; i<methodToInsert.length-1; i++) {
     outArray.push(methodToInsert[i]);
   }
   for(var i=methodEndIndex+1; i<bytes.length; i++) {
@@ -91,11 +91,16 @@ function convertToIntArray(s) {
   for(var i=0; i<s.length; i++) {
     var code = s[i].charCodeAt(0);
     if(code==10) {
-      //arr.push(code);
-      //arr.push(0);
+      arr.push(13);
+      arr.push(0);
+      arr.push(code);
+      arr.push(0);
     }
-    arr.push(code);
-    arr.push(0);
+    else {
+      arr.push(code);
+      arr.push(0);
+    }
+    
   }
   //arr.pop();
   return arr;
