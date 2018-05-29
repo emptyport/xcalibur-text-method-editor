@@ -7,6 +7,7 @@ var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
 var data = [];
 var bytes;
 var outArray;
+var blob;
 
 
 
@@ -51,20 +52,17 @@ function exportMethod() {
 
   outArray = [];
   for(var i=0; i<methodBeginIndex; i++) {
-    outArray.push(String.fromCharCode(bytes[i]));
+    outArray.push(bytes[i]);
   }
   var methodToInsert = convertToIntArray(methodContent);
   for(var i=0; i<methodToInsert.length; i++) {
-    outArray.push(String.fromCharCode(methodToInsert[i]));
+    outArray.push(methodToInsert[i]);
   }
   for(var i=methodEndIndex+1; i<bytes.length; i++) {
-    outArray.push(String.fromCharCode(bytes[i]));
+    outArray.push(bytes[i]);
   }
 
-  /*var outArray = bytes.splice(methodBeginIndex, methodEndIndex - methodBeginIndex);
-  outArray.splice.apply(outArray, [methodBeginIndex, 0].concat(convertToIntArray(methodContent)));*/
-
-  var blob = new Blob(outArray, {type: "octet/stream"});
+  blob = new Blob([new Uint8Array(outArray)], {type: "application/octet-stream"});
   var objectUrl = URL.createObjectURL(blob);
   window.open(objectUrl);
 }
