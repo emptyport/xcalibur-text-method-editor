@@ -91,8 +91,8 @@ function convertToIntArray(s) {
   for(var i=0; i<s.length; i++) {
     var code = s[i].charCodeAt(0);
     if(code==10) {
-      arr.push(code);
-      arr.push(0);
+      //arr.push(code);
+      //arr.push(0);
     }
     arr.push(code);
     arr.push(0);
