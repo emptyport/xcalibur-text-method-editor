@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <!-- Create a simple CodeMirror instance -->
+        <link rel="stylesheet" href="codemirror-5.38.0/lib/codemirror.css">
+        <script src="codemirror-5.38.0/lib/codemirror.js"></script>
+        <script src="codemirror-5.38.0/mode/xml/xml.js"></script>
+        <script src="codemirror-5.38.0/addon/selection/active-line.js"></script>
+        <script src="codemirror-5.38.0/addon/edit/matchbrackets.js"></script>
+
+        <link rel="stylesheet" href="index.css">
+    </head>
+
+    <body>
+        <input type="file" id="file" name="files[]" onchange="readFile()"/>
+        <button>Export</button>
+        <textarea id="code" name="code">
+
+        </textarea>
+    </body>
+
+    <script src="index.js"></script>
+
+
+</html>
